@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <p className="text-primary">hello</p>
+      {/* <p className="text-primary">hello</p>
       <p className="text-secondary">hello</p>
       <p className="text-blue-450">hello</p>
       <Link to='/login'>
@@ -22,10 +22,10 @@ function App() {
       <p className="mt-4"></p>
       <Link to='/forgottonPassword'>
         ForgottonPassword
-      </Link>
+      </Link> */}
       <Suspense fallback = {<PageLoader/>}>
           <Routes>
-             <Route path='/login' element= { <Login />} />
+             <Route path='/' element= { <Login />} />
              <Route path='/forgottonPassword' element= { <ForgottonPassword/>} />
           </Routes>
       </Suspense> 
