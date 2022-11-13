@@ -5,6 +5,7 @@ import {Routes,Route,Link} from 'react-router-dom'
 
 
 const Login = lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/login/Login'))
+const VerifyEmail = lazy(() => import(/*webpackChunkName:'verifyEmail Page'*/'./pages/authed/Verify-email/verify-email'))
 const  ForgottonPassword= lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/forgot-password/ForgottonPassword'))
 
 
@@ -26,6 +27,7 @@ function App() {
       <Suspense fallback = {<PageLoader/>}>
           <Routes>
              <Route path='/' element= { <Login />} />
+             <Route path='/verifyEmail' element= { <VerifyEmail />} />
              <Route path='/forgottonPassword' element= { <ForgottonPassword/>} />
           </Routes>
       </Suspense> 
