@@ -5,32 +5,51 @@ import { Routes, Route, Link } from "react-router-dom";
 const Login = lazy(() =>
   import(/*webpackChunkName:'login Page'*/ "./pages/authed/login/Login")
 );
-
+const VerifyEmail = lazy(() =>
+  import(
+    /*webpackChunkName:'verifyEmail Page'*/ "./pages/authed/Verify-email/verify-email"
+  )
+);
 const ForgottonPassword = lazy(() =>
   import(
     /*webpackChunkName:'login Page'*/ "./pages/authed/forgot-password/ForgottonPassword"
   )
 );
-
-const ForgotPassword = lazy(() =>
+const CheckMailBox = lazy(() =>
   import(
-    /*webpackChunkName:'ForgotPassword Page'*/ "./components/ForgotPassword"
+    /*webpackChunkName:'checkMailBox Page'*/ "./pages/authed/forgot-password/CheckMailBox"
+  )
+);
+const ResetPassword = lazy(() =>
+  import(
+    /*webpackChunkName:'resetPassword Page'*/ "./pages/authed/ResetPassword/resetPassword"
   )
 );
 
-const CheckMailBox = lazy(() =>
-  import(/*webpackChunkName:'CheckMailBox Page'*/ "./components/CheckMailBox")
-);
+// const CheckMailBox = lazy(() =>
+//   import(/*webpackChunkName:'CheckMailBox Page'*/ "./components/CheckMailBox")
+// );
 
 function App() {
   return (
     <div className="App">
+      {/* <p className="text-primary">hello</p>
+      <p className="text-secondary">hello</p>
+      <p className="text-blue-450">hello</p>
+      <Link to='/login'>
+         login
+      </Link>
+      <p className="mt-4"></p>
+      <Link to='/forgottonPassword'>
+        ForgottonPassword
+      </Link> */}
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/verifyEmail" element={<VerifyEmail />} />
           <Route path="/forgottonPassword" element={<ForgottonPassword />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/checkMailBox" element={<CheckMailBox />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
       </Suspense>
     </div>
