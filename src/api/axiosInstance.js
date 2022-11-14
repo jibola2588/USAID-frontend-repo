@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 //get token from local storage
-let data = localStorage.getItem('token')
+let token = localStorage.getItem('token')
 
-const accessToken = data ? JSON.parse(data) : null
+const accessToken = token ? JSON.parse(data) : null
 
 console.log(accessToken)
 
@@ -16,3 +16,5 @@ headers: {
     Authorization:`Bearer ${accessToken}`
 }
  })
+
+
