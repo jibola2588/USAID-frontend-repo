@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { Wrapper } from './Login.styles';
+import { Link } from 'react-router-dom';
+import Logo from '../../../assets/Vertical_RGB_294.svg'
+
 
 
  const Login = () => {
@@ -37,7 +40,7 @@ import { Wrapper } from './Login.styles';
                       <label for="remember" className="text-[#344054] font-[500] dark:text-gray-300">Remember Password</label>
                     </div>
                   </div>
-                  <a href="#" className="text-sm font-medium text-[#3068AE] hover:underline dark:text-primary-500">Forgot password?</a>
+                  <Link to='/forgottonPassword' className="text-sm font-medium text-[#3068AE] hover:underline dark:text-primary-500">Forgot password?</Link>
                 </div>
             
                 <Link to='/verifyEmail' type="submit" className="w-full text-white bg-[#3068AE] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 outline-none">Sign in</Link>
