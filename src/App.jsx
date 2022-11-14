@@ -7,6 +7,8 @@ import {Routes,Route,Link} from 'react-router-dom'
 const Login = lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/login/Login'))
 const VerifyEmail = lazy(() => import(/*webpackChunkName:'verifyEmail Page'*/'./pages/authed/Verify-email/verify-email'))
 const  ForgottonPassword= lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/forgot-password/ForgottonPassword'))
+const  CheckMailBox = lazy(() => import(/*webpackChunkName:'checkMailBox Page'*/'./pages/authed/forgot-password/CheckMailBox'))
+const  ResetPassword= lazy(() => import(/*webpackChunkName:'resetPassword Page'*/'./pages/authed/ResetPassword/resetPassword'))
 
 
 
@@ -29,6 +31,8 @@ function App() {
              <Route path='/' element= { <Login />} />
              <Route path='/verifyEmail' element= { <VerifyEmail />} />
              <Route path='/forgottonPassword' element= { <ForgottonPassword/>} />
+             <Route path='/checkMailBox' element= { <CheckMailBox/>} />
+             <Route path='/resetPassword' element= { <ResetPassword/>} />
           </Routes>
       </Suspense> 
     </div>
