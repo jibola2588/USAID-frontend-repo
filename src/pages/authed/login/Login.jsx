@@ -1,14 +1,8 @@
 import React, { useContext } from 'react';
 import { Wrapper } from './Login.styles';
-import { storeProvider } from '../../../store/storeContext'
-// import LoginForm from '../../../components/Login'
-import Logo from '../../../assets/Vertical_RGB_294.svg'
-import { Link } from 'react-router-dom';
 
 
-const Login = () => {
-  const dataContext = useContext(storeProvider)
-  console.log(dataContext)
+ const Login = () => {
   return (
     <Wrapper>
       <section className=" dark:bg-gray-900">
