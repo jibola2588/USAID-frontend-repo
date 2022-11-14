@@ -6,6 +6,7 @@ import { Wrapper } from './Login.styles';
   return (
       <Wrapper>
        login page
+   <p>login page view </p>
     </Wrapper>
   );
 }
