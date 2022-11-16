@@ -29,7 +29,7 @@ const LoaderWrapper = styled.div`
   width: 100px;
   height: 4px;
   overflow: hidden;
-  background-color: red;
+  background-color:rgba(247, 250, 252);
   background-clip: padding-box;
 `
 
@@ -37,7 +37,8 @@ const LoaderBottom = styled.div`
   position: absolute;
   height: 4px;
   overflow: hidden;
-  background-color: green;
+  background-color:rgba(213, 233, 247);
+  // background-color:rgba(221, 228, 237);
   background-clip: padding-box;
   display: block;
   border-radius: 2px;
@@ -50,7 +51,8 @@ const LoaderTop = styled.div`
   position: absolute;
   height: 4px;
   overflow: hidden;
-  background-color: yellow;
+  // background-color:#3068AE;
+  background-color:rgba(48,104,174);
   background-clip: padding-box;
   display: block;
   border-radius: 2px;

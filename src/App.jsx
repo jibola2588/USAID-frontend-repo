@@ -1,6 +1,6 @@
-import { useState,Suspense,lazy } from 'react'
+import { Suspense,lazy } from 'react'
 import { PageLoader } from './components/page-loader'
-import {Routes,Route,Link} from 'react-router-dom'
+import {Routes,Route} from 'react-router-dom'
 
 
 
@@ -16,19 +16,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <p className="text-primary">hello</p>
-      <p className="text-secondary">hello</p>
-      <p className="text-blue-450">hello</p>
-      <Link to='/login'>
-         login
-      </Link>
-      <p className="mt-4"></p>
-      <Link to='/forgottonPassword'>
-        ForgottonPassword
-      </Link> */}
       <Suspense fallback = {<PageLoader/>}>
           <Routes>
-             <Route path='/' element= { <Login />} />
+             <Route path='/login' element= { <Login />} />
              <Route path='/verifyEmail' element= { <VerifyEmail />} />
              <Route path='/forgottonPassword' element= { <ForgottonPassword/>} />
              <Route path='/checkMailBox' element= { <CheckMailBox/>} />
