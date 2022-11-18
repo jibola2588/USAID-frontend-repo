@@ -1,6 +1,6 @@
 import React, { useContext,useState,useRef,useEffect} from 'react';
 import  {Wrapper,Instruction } from './Login.styles'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/Vertical_RGB_294.svg'
 import { FaEye, FaEyeSlash,FaInfoCircle } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
@@ -11,16 +11,18 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
 const Login = () => {
+  const navigate = useNavigate()
 
-  const [viewPassword, setViewPassword] = useState(true);
+  const [viewPassword, setViewPassword] = useState('password');
   const numberInput = useRef(null);
 
 
   const togglePasswordView = () => {
-    setViewPassword(!viewPassword);
-    viewPassword == true
-      ? (numberInput.current.type = "text")
-      : (numberInput.current.type = "password");
+    if (viewPassword  === 'password') {
+      setViewPassword('text')
+    } else {
+      setViewPassword('password')
+    }
   };
 
   const emailRef = useRef();
@@ -66,6 +68,10 @@ const Login = () => {
       return
     }
     console.log(email,pwd)
+    setTimeout(() => { 
+      navigate('/verifyEmail')
+    },1200)
+
   }
 
   return (
@@ -123,7 +129,7 @@ const Login = () => {
                 <div className='relative'>
                   <label for="password" className="block mb-2 text-sm font-medium text-[#344054] normal dark:text-white">Password</label>
                   <input 
-                  type={numberInput} 
+                  type={viewPassword} 
                   name="password" 
                   id="password" 
                   placeholder="Enter your password"
@@ -139,7 +145,7 @@ const Login = () => {
                   
                    <span class="absolute  inline-flex items-center right-4 top-[55%]">
                 <div className="flex justify-end">
-                  {viewPassword ? (
+                  {viewPassword === 'password' ? (
                     < FaEye 
                     style = {{width:22, height:20,color:'#344054',cursor:'pointer'}}
                     onClick={ togglePasswordView } />
