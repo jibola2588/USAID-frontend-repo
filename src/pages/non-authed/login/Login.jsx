@@ -1,6 +1,6 @@
 import React, { useContext,useState,useRef,useEffect} from 'react';
 import  {Wrapper,Instruction } from './Login.styles'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/Vertical_RGB_294.svg'
 import { FaEye, FaEyeSlash,FaInfoCircle } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
@@ -11,16 +11,18 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
 const Login = () => {
+  const navigate = useNavigate()
 
-  const [viewPassword, setViewPassword] = useState(true);
+  const [viewPassword, setViewPassword] = useState('password');
   const numberInput = useRef(null);
 
 
   const togglePasswordView = () => {
-    setViewPassword(!viewPassword);
-    viewPassword == true
-      ? (numberInput.current.type = "text")
-      : (numberInput.current.type = "password");
+    if (viewPassword  === 'password') {
+      setViewPassword('text')
+    } else {
+      setViewPassword('password')
+    }
   };
 
   const emailRef = useRef();
@@ -35,7 +37,8 @@ const Login = () => {
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [error,setError] = useState('')
-  const [success,setSuccess] = useState(false)
+  const [success,setSuccess] = useState('')
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
    emailRef.current.focus()
@@ -65,7 +68,13 @@ const Login = () => {
       setError('invalid entry')
       return
     }
+    setLoading(true)
     console.log(email,pwd)
+    setSuccess('signed in successfully,you are re-directed to verify your mail')
+    setTimeout(() => { 
+      navigate('/verifyEmail')
+    },1200)
+
   }
 
   return (
@@ -81,6 +90,9 @@ const Login = () => {
                
             { error && <div role="alert" class="rounded border-l-4 border-red-500 bg-red-50 p-4">
                <strong class="block font-medium text-red-700"> {error}</strong>
+            </div>}
+            { success && <div role="alert" class="rounded border-l-4 border-green-500 bg-green-50 p-4">
+               <strong class="block font-medium text-green-700"> {success}</strong>
             </div>}
 
 
@@ -123,7 +135,7 @@ const Login = () => {
                 <div className='relative'>
                   <label for="password" className="block mb-2 text-sm font-medium text-[#344054] normal dark:text-white">Password</label>
                   <input 
-                  type={numberInput} 
+                  type={viewPassword} 
                   name="password" 
                   id="password" 
                   placeholder="Enter your password"
@@ -139,7 +151,7 @@ const Login = () => {
                   
                    <span class="absolute  inline-flex items-center right-4 top-[55%]">
                 <div className="flex justify-end">
-                  {viewPassword ? (
+                  {viewPassword === 'password' ? (
                     < FaEye 
                     style = {{width:22, height:20,color:'#344054',cursor:'pointer'}}
                     onClick={ togglePasswordView } />
@@ -174,7 +186,9 @@ const Login = () => {
                 <button 
                           disabled = {!validEmail || !validPwd  ? true : false}
                 type="submit" 
-                className={`w-full text-white bg-[#3068AE] hover:bg-primary-700 rounded-lg text-sm px-5 py-2.5 text-center outline-none cursor-pointer ${ !validEmail || !validPwd ? 'cursor-not-allowed' : 'cursor-pointer'}`}>Sign in</button>
+                className={`w-full text-white bg-[#3068AE] hover:bg-primary-700 rounded-lg text-sm px-5 py-2.5 text-center outline-none cursor-pointer ${ !validEmail || !validPwd ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                  { loading ? 'loading..':' Sign in'}
+                  </button>
               
               </form>
             </div>

@@ -1,4 +1,9 @@
 import axios from 'axios'
+import {useAuthContext} from '../context/AuthContext'
+
+//get token from context
+console.log(useAuthContext())
+
 
 //get token from local storage
 let token = localStorage.getItem('token')

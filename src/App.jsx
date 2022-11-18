@@ -4,11 +4,12 @@ import {Routes,Route} from 'react-router-dom'
 
 
 
-const Login = lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/login/Login'))
-const VerifyEmail = lazy(() => import(/*webpackChunkName:'verifyEmail Page'*/'./pages/authed/Verify-email/verify-email'))
-const  ForgottonPassword= lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/authed/forgot-password/ForgottonPassword'))
-const  CheckMailBox = lazy(() => import(/*webpackChunkName:'checkMailBox Page'*/'./pages/authed/forgot-password/CheckMailBox'))
-const  ResetPassword= lazy(() => import(/*webpackChunkName:'resetPassword Page'*/'./pages/authed/ResetPassword/resetPassword'))
+const Home = lazy(() => import(/*webpackChunkName:'home Page'*/'./pages/non-authed/home/Home'))
+const Login = lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/non-authed/login/Login'))
+const VerifyEmail = lazy(() => import(/*webpackChunkName:'verifyEmail Page'*/'./pages/non-authed/Verify-email/verify-email'))
+const  ForgottonPassword= lazy(() => import(/*webpackChunkName:'login Page'*/'./pages/non-authed/forgot-password/ForgottonPassword'))
+const  CheckMailBox = lazy(() => import(/*webpackChunkName:'checkMailBox Page'*/'./pages/non-authed/forgot-password/CheckMailBox'))
+const  ResetPassword= lazy(() => import(/*webpackChunkName:'resetPassword Page'*/'./pages/non-authed/ResetPassword/resetPassword'))
 
 
 
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <Suspense fallback = {<PageLoader/>}>
           <Routes>
+             <Route path='/' element= { <Home />} />
              <Route path='/login' element= { <Login />} />
              <Route path='/verifyEmail' element= { <VerifyEmail />} />
              <Route path='/forgottonPassword' element= { <ForgottonPassword/>} />

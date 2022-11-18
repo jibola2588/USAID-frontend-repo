@@ -1,5 +1,6 @@
 import {createContext,
     useContext,
+    useState,
     useReducer} from 'react'
 
 
@@ -12,27 +13,27 @@ const initialState = {
 }
 
 const reducers = (state,action) => { 
-    // switch(action.type){ 
-    //     case 'login': 
-    //       return { 
-    //         user : action.payload
-    //       }
-    //     break;
-    //     case 'logout': 
-    //     return { 
-    //         user: null
-    //     }
-    //     break;
-    //     default:
-    //      return initialState
-    // }
-    return state
+    switch(action.type){ 
+        case 'login': 
+          return { 
+            user : action.payload
+          }
+        break;
+        case 'logout': 
+        return { 
+            user: null
+        }
+        break;
+        default:
+         return initialState
+    }
+    // return state
 }
 
 export const AuthContextProvider = ({children}) => { 
-    const [user,dispatch] = useReducer(initialState,reducers)
-    return( 
-        <AuthContext.Provider value = {{user,dispatch}}>
+    const [contextData,dispatch] = useReducer(reducers,initialState)
+   return( 
+        <AuthContext.Provider value = {{contextData,dispatch}}>
              {children}
         </AuthContext.Provider>
     )
